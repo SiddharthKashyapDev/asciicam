@@ -1,16 +1,19 @@
 # ASCIICAM
 
+TEST
+
 A real-time webcam viewer that renders video as ASCII art directly in your terminal.
 
 ---
 
 ## Table of Contents
-* [General Info](#general-info)
-* [Features](#features)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [Controls](#controls)
-* [Sample](#sample)
+
+- [General Info](#general-info)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Controls](#controls)
+- [Sample](#sample)
 
 ---
 
@@ -67,22 +70,21 @@ python main.py
 
 ## Controls
 
-| Key         | Action                        |
-|-------------|-------------------------------|
-| `↑` / `↓`    | Increase / decrease contrast   |
-| `→` / `←`    | Increase / decrease brightness |
-| `+` / `-`    | Increase / decrease size (×10) |
-| `.` / `,`    | Fine-tune size (×1)           |
-| `r`         | Reset settings to default     |
-| `h`         | Show help menu                |
-| `q`         | Quit                          |
+| Key       | Action                         |
+| --------- | ------------------------------ |
+| `↑` / `↓` | Increase / decrease contrast   |
+| `→` / `←` | Increase / decrease brightness |
+| `+` / `-` | Increase / decrease size (×10) |
+| `.` / `,` | Fine-tune size (×1)            |
+| `r`       | Reset settings to default      |
+| `h`       | Show help menu                 |
+| `q`       | Quit                           |
 
 > Tip: Press Enter to exit the help menu.
 
 ---
 
 ## Sample
-
 
 ![Sample Output](/img/sample.png?raw=true "Sample output from ASCIICAM")
 
