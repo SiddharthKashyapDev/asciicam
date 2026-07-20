@@ -19,8 +19,8 @@ pipeline {
         powershell '''
           python --version
           python -m venv .venv
-          & .\.venv\Scripts\python.exe -m pip install --upgrade pip
-          & .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+          & .\\.venv\\Scripts\\python.exe -m pip install --upgrade pip
+          & .\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt
         '''
       }
     }
@@ -28,12 +28,12 @@ pipeline {
     stage('Validate source code') {
       steps {
         powershell '''
-          & .\.venv\Scripts\python.exe -m compileall -q main.py helpers.py image_handler.py font_utils.py
+          & .\\.venv\\Scripts\\python.exe -m compileall -q main.py helpers.py image_handler.py font_utils.py
           if ($LASTEXITCODE -ne 0) {
             throw 'Python syntax validation failed.'
           }
 
-          & .\.venv\Scripts\python.exe -c "import cv2, keyboard, numpy; from PIL import Image; print('Dependencies imported successfully.')"
+          & .\\.venv\\Scripts\\python.exe -c "import cv2, keyboard, numpy; from PIL import Image; print('Dependencies imported successfully.')"
           if ($LASTEXITCODE -ne 0) {
             throw 'A required Python dependency could not be imported.'
           }
@@ -60,7 +60,7 @@ pipeline {
           Copy-Item main.py, helpers.py, image_handler.py, font_utils.py, requirements.txt, README.md, LICENSE, consola.ttf -Destination dist
           Copy-Item img -Destination dist -Recurse
 
-          Compress-Archive -Path dist\* -DestinationPath ASCIICAM.zip -Force
+          Compress-Archive -Path dist\\* -DestinationPath ASCIICAM.zip -Force
         '''
         archiveArtifacts artifacts: 'ASCIICAM.zip', fingerprint: true
       }
