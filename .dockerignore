@@ -1,7 +1,15 @@
+.git
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+dist
+ASCIICAM*.tar.gz
+consola.ttf
+Jenkinsfile
+*** Add File: C:\Users\Pc\Documents\Codex\2026-07-19\mu\outputs\Jenkinsfile-asciicam-docker
 pipeline {
-  agent {
-    label 'linux-vmware'
-  }
+  agent any
 
   triggers {
     githubPush()
@@ -49,6 +57,12 @@ pipeline {
         sh 'docker save --output "asciicam-${BUILD_NUMBER}.tar" "$IMAGE_REF"'
         archiveArtifacts artifacts: 'asciicam-*.tar', fingerprint: true
       }
+    }
+  }
+
+  post {
+    always {
+      sh 'docker image rm "$IMAGE_REF" || true'
     }
   }
 }
