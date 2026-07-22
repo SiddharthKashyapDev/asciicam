@@ -54,7 +54,8 @@ class SettingThreadArgs:
 
 class Camera:
     def __init__(self):
-        self.cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        backend = cv2.CAP_DSHOW if sys.platform.startswith("win") else cv2.CAP_V4L2
+        self.cam = cv2.VideoCapture(0, backend)
 
     def take_photo(self):
         ret, frame = self.cam.read()
